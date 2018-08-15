@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rtt.demo.mapper.CollectRecordMapper">
+  <resultMap id="BaseResultMap" type="com.rtt.demo.domain.CollectRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="collecting_no" jdbcType="VARCHAR" property="collectingNo" />
+    <result column="collecting_name" jdbcType="VARCHAR" property="collectingName" />
+    <result column="collecting_address" jdbcType="VARCHAR" property="collectingAddress" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="tag_no" jdbcType="VARCHAR" property="tagNo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="opt_user_name" jdbcType="VARCHAR" property="optUserName" />
+    <result column="opt_user_id" jdbcType="VARCHAR" property="optUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collecting_no, collecting_name, collecting_address, province, city, region, order_id, 
+    item_name, qty, tag_no, remark, opt_user_name, opt_user_id, create_time, update_time, 
+    is_del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from collect_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" parameterType="java.lang.Long" resultType="com.rtt.demo.domain.CollectRecord">
+    SELECT * from collect_record where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from collect_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.rtt.demo.domain.CollectRecord">
+    insert into collect_record (id, collecting_no, collecting_name, 
+      collecting_address, province, city, 
+      region, order_id, item_name, 
+      qty, tag_no, remark, 
+      opt_user_name, opt_user_id, create_time, 
+      update_time, is_del)
+    values (#{id,jdbcType=BIGINT}, #{collectingNo,jdbcType=VARCHAR}, #{collectingName,jdbcType=VARCHAR}, 
+      #{collectingAddress,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{region,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{qty,jdbcType=INTEGER}, #{tagNo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{optUserName,jdbcType=VARCHAR}, #{optUserId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtt.demo.domain.CollectRecord">
+    insert into collect_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectingNo != null">
+        collecting_no,
+      </if>
+      <if test="collectingName != null">
+        collecting_name,
+      </if>
+      <if test="collectingAddress != null">
+        collecting_address,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="region != null">
+        region,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="tagNo != null">
+        tag_no,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="optUserName != null">
+        opt_user_name,
+      </if>
+      <if test="optUserId != null">
+        opt_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="collectingNo != null">
+        #{collectingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="collectingName != null">
+        #{collectingName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectingAddress != null">
+        #{collectingAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="tagNo != null">
+        #{tagNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="optUserName != null">
+        #{optUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="optUserId != null">
+        #{optUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtt.demo.domain.CollectRecord">
+    update collect_record
+    <set>
+      <if test="collectingNo != null">
+        collecting_no = #{collectingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="collectingName != null">
+        collecting_name = #{collectingName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectingAddress != null">
+        collecting_address = #{collectingAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="tagNo != null">
+        tag_no = #{tagNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="optUserName != null">
+        opt_user_name = #{optUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="optUserId != null">
+        opt_user_id = #{optUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtt.demo.domain.CollectRecord">
+    update collect_record
+    set collecting_no = #{collectingNo,jdbcType=VARCHAR},
+      collecting_name = #{collectingName,jdbcType=VARCHAR},
+      collecting_address = #{collectingAddress,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=INTEGER},
+      tag_no = #{tagNo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      opt_user_name = #{optUserName,jdbcType=VARCHAR},
+      opt_user_id = #{optUserId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
